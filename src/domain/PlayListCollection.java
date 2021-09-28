@@ -1,6 +1,9 @@
 package domain;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * The type Play list collection.
@@ -17,8 +20,8 @@ public class PlayListCollection {
      *
      * @param playListMap the play list map
      */
-    public PlayListCollection(Map<String, PlayList> playListMap) {
-        this.playListMap = playListMap;
+    public PlayListCollection() {
+        playListMap = new HashMap<String, PlayList>();
     }
 
     /**
@@ -51,7 +54,35 @@ public class PlayListCollection {
 
     }
 
+    /**
+     * 通过播放列表得名称查询播放列表
+     *
+     * @param playListName the play list name
+     * @return the play list
+     */
+    public PlayList searchPlayListbyName(String playListName) {
+        PlayList playList = null;
+        Set<String> keySet = playListMap.keySet();
+        for (String key : keySet) {
+            if (playListName.equals(key)) {
+                playList = playListMap.get(key);
+                break;
+            }
+        }
+        return playList;
+    }
 
+    /**
+     * Display all play list.
+     * 显示所有播放列表
+     */
+    public void displayAllPlayList() {
+        Iterator<PlayList> iterator = playListMap.values().iterator();
+        System.out.println("播放列表的名称为");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
 
 
     /**
@@ -61,6 +92,6 @@ public class PlayListCollection {
      */
     public void addPlayList(PlayList playList) {
         //播放列表名称称为key值
-        playListMap.put(playList.getPlayListName(),playList);
+        playListMap.put(playList.getPlayListName(), playList);
     }
 }

@@ -1,6 +1,7 @@
 package domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -9,6 +10,14 @@ import java.util.*;
 public class PlayList {
     private String playListName;//播放列表的名称
     private List<Song> musicList;//播放列表中的歌曲集合
+
+    public List<Song> getMusicList() {
+        return musicList;
+    }
+
+    public void setMusicList(List<Song> musicList) {
+        this.musicList = musicList;
+    }
 
     /**
      * Instantiates a new Play list.
@@ -55,10 +64,16 @@ public class PlayList {
         //id是唯一的
         for (Song song1 : musicList) {
             if (song1.getId().equals(id)) {
-                song = song1;break;
+                song = song1;
+                break;
             }
         }
         return song;
+    }
+
+    @Override
+    public String toString() {
+        return "播放列表名称为" + playListName;
     }
 
     /**

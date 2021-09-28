@@ -1,7 +1,5 @@
 package domain;
 
-import java.io.PrintStream;
-
 public class TestDemo {
     //对歌曲类Song进行测试
     public void testSong() {
@@ -15,9 +13,6 @@ public class TestDemo {
         System.out.println(song3.hashCode());
         System.out.println(song4.hashCode());
         System.out.println(song1);
-
-
-        
 
 
     }
@@ -45,25 +40,45 @@ public class TestDemo {
             System.out.println("该歌曲不存在");
         }
 
-        Song songUpdate = new Song("s005","春天在哪里","hwy");
-        mainPlayList.upDateSong("s003",songUpdate);
+        Song songUpdate = new Song("s005", "春天在哪里", "hwy");
+        mainPlayList.upDateSong("s003", songUpdate);
         mainPlayList.displayAllSong();
         mainPlayList.deleteSong("s002");
         mainPlayList.displayAllSong();
 
 
-
-
-
     }
 
-
+    //测试播放列表集合类
+    public void testPlayListCollection() {
+        Song song1 = new Song("s001", "外婆的澎湖湾", "外婆");
+        Song song2 = new Song("s002", "黄昏", "老黄");
+        Song song3 = new Song("s003", "爱笑的眼睛", "林俊杰");
+        Song song4 = new Song("s003", "爱笑的眼睛", "林俊杰");
+        //创建主播放列表
+        PlayList mainPlayList = new PlayList("主播放列表");
+        mainPlayList.addToPlayList(song1);
+        mainPlayList.addToPlayList(song2);
+        mainPlayList.addToPlayList(song3);
+        mainPlayList.addToPlayList(song4);
+        //定义一个新的播放列列表，从主播放列表中添加歌曲进来
+        PlayList favouritePlayList = new PlayList("最喜欢的歌曲");
+        favouritePlayList.addToPlayList(mainPlayList.getMusicList().get(0));
+        favouritePlayList.addToPlayList(mainPlayList.getMusicList().get(1));
+        favouritePlayList.displayAllSong();
+        //将两个播放列表添加到播放列表集合中
+        PlayListCollection playListCollection = new PlayListCollection();
+        playListCollection.addPlayList(mainPlayList);
+        playListCollection.addPlayList(favouritePlayList);
+        playListCollection.displayAllPlayList();
+    }
 
 
     public static void main(String[] args) {
         TestDemo testDemo = new TestDemo();
 //        testDemo.testSong();
-       testDemo.testPlayList();
+//        testDemo.testPlayList();
+        testDemo.testPlayListCollection();
 
 
     }
