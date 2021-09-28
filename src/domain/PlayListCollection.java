@@ -47,6 +47,8 @@ public class PlayListCollection {
     public void deletePlayList(PlayList playList) {
         playListMap.remove(playList.getPlayListName());
         System.out.println("删除成功！");
+
+
     }
 
 
