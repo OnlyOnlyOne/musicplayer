@@ -1,5 +1,7 @@
 package domain;
 
+import service.Test;
+
 public class TestDemo {
     //对歌曲类Song进行测试
     public void testSong() {
@@ -71,6 +73,13 @@ public class TestDemo {
         playListCollection.addPlayList(mainPlayList);
         playListCollection.addPlayList(favouritePlayList);
         playListCollection.displayAllPlayList();
+
+    }
+
+    //主流程
+    public void mainService() {
+        Test test = new Test();
+        test.test();
     }
 
 
@@ -78,8 +87,8 @@ public class TestDemo {
         TestDemo testDemo = new TestDemo();
 //        testDemo.testSong();
 //        testDemo.testPlayList();
-        testDemo.testPlayListCollection();
-
+//        testDemo.testPlayListCollection();
+        testDemo.mainService();
 
     }
 
